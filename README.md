@@ -1,4 +1,6 @@
 # BlogApp
+Swagger Url: https://blogclane.herokuapp.com/blog-service/swagger-ui.html
+
 
 Login Url: https://blogclane.herokuapp.com/blog-service/api/v1/auth/login
 Request:{
