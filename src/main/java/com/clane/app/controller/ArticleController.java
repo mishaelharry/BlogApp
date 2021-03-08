@@ -39,6 +39,7 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
     
+    //Create article endpoint
     @PostMapping
     public ResponseEntity<BaseResponse> createArticle(@Valid @RequestBody ArticleRequest articleRequest, 
             @CurrentUser UserPrincipal principal) {
@@ -54,6 +55,7 @@ public class ArticleController {
         }
     }
     
+    //Get all article endpoint
     @GetMapping("/all")
     public ResponseEntity<BaseResponse<List<ArticleResponse>>> getArticles() {
         List<ArticleResponse> articleResponses = articleService.getArticles();
@@ -64,6 +66,7 @@ public class ArticleController {
         }
     }
     
+    //Get one writer article endpoint    
     @GetMapping("/writer")
     public ResponseEntity<BaseResponse<List<ArticleResponse>>> getArticles(@CurrentUser UserPrincipal principal) {
         List<ArticleResponse> articleResponses = articleService.getArticles(principal.getId());
@@ -74,6 +77,8 @@ public class ArticleController {
         }
     }
     
+    
+    //Get one article endpoint
     @GetMapping("/{articleId}")
     public ResponseEntity<BaseResponse<ArticleResponse>> getArticle(@PathVariable("articleId") Long articleId) {
         ArticleResponse articleResponse = articleService.getArticle(articleId);
@@ -84,6 +89,8 @@ public class ArticleController {
         }
     }
     
+    
+    //Update article endpoint
     @PutMapping("/{articleId}")
     public ResponseEntity<BaseResponse> updateArticle(@PathVariable("articleId") Long articleId,
             @Valid @RequestBody ArticleRequest articleRequest) {        
@@ -97,6 +104,7 @@ public class ArticleController {
         }
     }
     
+    //Delete article endpoint    
     @DeleteMapping("/{articleId}")
     public ResponseEntity<BaseResponse> deleteArticle(@PathVariable("articleId") Long articleId){ 
         articleService.deleteArticle(articleId);

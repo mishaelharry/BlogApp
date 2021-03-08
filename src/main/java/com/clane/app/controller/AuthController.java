@@ -44,6 +44,7 @@ public class AuthController {
     @Autowired
     private JwtTokenProvider tokenProvider;
     
+    //Login endpoint
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@Valid @RequestBody LoginRequest loginRequest){
         Authentication authentication = authenticationManager.authenticate(
@@ -59,6 +60,7 @@ public class AuthController {
         return ResponseEntity.ok(new JwtResponse(jwt));
     }
     
+    //Register endpoint
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterRequest registerRequest){
         if(userService.existsByEmail(registerRequest.getEmail())){

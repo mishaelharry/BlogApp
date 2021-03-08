@@ -30,6 +30,7 @@ public class WriterController {
     @Autowired
     private UserService userService;
     
+    //Get all writer endpoint
     @GetMapping
     public ResponseEntity<BaseResponse<List<UserResponse>>> getWriters() {
         List<UserResponse> userResponses = userService.getUsers();
